@@ -77,6 +77,29 @@ run;
 i.	Use a graphical approach by producing log-negative-log (LLS) plots against 
 log-transformed survival time to evaluate the proportional hazards assumption for 
 chf and sho, respectively (4 points). Interpret the plot results (4 points).*/
+
+/*i*/
+proc lifetest plots=(lls s ls) notable; 
+	time los*dstat(0);
+	strata chf;
+	title 'Evaluating PH assumption using graphical approach';
+run;
+proc lifetest plots=(lls s ls) notable; 
+	time los*dstat(0);
+	strata sho;
+	title 'Evaluating PH assumption using graphical approach';
+run;
+proc lifetest plots=(lls s ls) notable; 
+	time lenfol*fstat(0);
+	strata chf;
+	title 'Evaluating PH assumption using graphical approach';
+run;
+proc lifetest plots=(lls s ls) notable; 
+	time lenfol*fstat(0);
+	strata sho;
+	title 'Evaluating PH assumption using graphical approach';
+run;
+
 /*
 ii.	Use Schoenfeld residuals to evaluate the proportional hazards assumption for age 
 and sho in a Cox model that includes age, BMI, cohort year, sysbp, sho and chf (2 points),
